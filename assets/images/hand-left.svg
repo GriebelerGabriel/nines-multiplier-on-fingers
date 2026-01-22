@@ -1,0 +1,10 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#FFE4C4"/>
+  <text x="200" y="200" text-anchor="middle" fill="#FFFFFF" font-size="30" font-family="Arial">LEFT HAND</text>
+  <text x="200" y="250" text-anchor="middle" fill="#FFFFFF" font-size="20" font-family="Arial">(Fingers 1-5)</text>
+  <text x="50" y="60" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="bold" font-family="Arial">1</text>
+  <text x="120" y="50" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="bold" font-family="Arial">2</text>
+  <text x="190" y="40" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="bold" font-family="Arial">3</text>
+  <text x="260" y="50" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="bold" font-family="Arial">4</text>
+  <text x="330" y="60" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="bold" font-family="Arial">5</text>
+</svg>

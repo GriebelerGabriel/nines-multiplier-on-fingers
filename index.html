@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nines Multiplication on Fingers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .hands-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .finger-label {
+            width: 60px;
+            height: 60px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .finger-label:hover {
+            transform: scale(1.15);
+            background: #764ba2;
+        }
+
+        .finger-label.selected {
+            background: #f093fb;
+            transform: scale(1.2);
+            box-shadow: 0 6px 20px rgba(240, 147, 251, 0.6);
+        }
+
+        .result-container {
+            margin-top: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .result {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .explanation {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 800px;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-title {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .popup-result {
+            font-size: 3em;
+            font-weight: bold;
+            color: #f5576c;
+            margin-bottom: 15px;
+        }
+
+        .popup-equation {
+            font-size: 1.5em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .popup-explanation {
+            font-size: 1.1em;
+            color: #888;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .close-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .prompt {
+            font-size: 1.3em;
+            color: #666;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .finger-label {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+
+            .result {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .finger-label {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .result {
+                font-size: 1.8em;
+            }
+
+            .explanation {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nines Multiplication</h1>
+        <p class="subtitle">Click a finger (1-10) to see the 9's multiplication result</p>
+
+        <div class="hands-container" id="hands-container" role="group" aria-label="Number buttons for multiplication">
+        </div>
+
+        <div class="result-container" id="result-container" role="region" aria-live="polite" aria-label="Multiplication result and explanation">
+            <div class="prompt" id="result" role="status">Click a number (1-10) to see the 9's multiplication result</div>
+            <div class="explanation" id="explanation-container" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-title">9's Multiplication</div>
+            <div class="popup-equation" id="popup-equation"></div>
+            <div class="popup-result" id="popup-result"></div>
+            <div class="popup-explanation" id="popup-explanation"></div>
+            <button class="close-button" id="close-popup">Close</button>
+        </div>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>

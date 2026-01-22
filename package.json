@@ -1,0 +1,29 @@
+{
+  "name": "nines-multiplier-on-fingers",
+  "version": "1.0.0",
+  "description": "Interactive web application teaching the 9's multiplication table using visual finger selection",
+  "type": "module",
+  "scripts": {
+    "start": "npx http-server -p 8002",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "devDependencies": {
+    "vitest": "^1.6.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "jsdom": "^24.0.0"
+  },
+  "keywords": [
+    "multiplication",
+    "education",
+    "math",
+    "fingers"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
