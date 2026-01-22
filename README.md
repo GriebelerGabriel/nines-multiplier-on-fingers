@@ -14,9 +14,8 @@ This project was **entirely written by AI agents** using:
 - **Visual Finger Selection**: Click on numbered fingers (1-10) displayed on hand graphics
 - **Instant Results**: See the corresponding 9's multiplication result immediately
 - **Educational Explanation**: Learn the finger counting pattern (fingers left = tens, fingers right = ones)
-- **Keyboard Navigation**: Use number keys (1-0) or arrow keys to select fingers, Escape to deselect
 - **Responsive Design**: Works on desktop and mobile devices (320px minimum width)
-- **Accessibility Support**: ARIA labels, screen reader compatible, keyboard navigation
+- **Accessibility Support**: ARIA labels, screen reader compatible
 - **Clean Code**: Vanilla JavaScript, no runtime dependencies, minimal and maintainable
 
 ## 📋 Prerequisites
@@ -32,7 +31,7 @@ This project was **entirely written by AI agents** using:
 ```bash
 git clone <repository-url>
 cd nines-multiplier-on-fingers
-git checkout 001-nines-fingers
+git checkout main
 ```
 
 ### 2. Install Dependencies (Development Only)
@@ -151,12 +150,6 @@ nines-multiplier-on-fingers/
 5. Click a different finger to change selection
 6. Click outside or press Escape to deselect
 
-### Keyboard Navigation
-
-- **Number keys 1-0**: Select corresponding finger (1-9, 0 selects finger 10)
-- **Arrow keys**: Navigate between fingers
-- **Escape key**: Deselect current finger
-
 ### Mobile Interaction
 
 - Tap on any finger to select it
@@ -247,7 +240,6 @@ describe('ClassName', () => {
 
 ## 🚦 Accessibility
 
-- **Keyboard navigation**: Full keyboard support (number keys, arrow keys, Escape)
 - **Screen reader support**: ARIA labels and roles, live regions for updates
 - **High contrast**: WCAG AA compliant color ratios
 - **Responsive**: Works on screens as small as 320px width
@@ -331,11 +323,10 @@ npm test tests/e2e/
 1. Open index.html in browser
 2. Test all 10 finger selections (1-10)
 3. Verify correct multiplication results
-4. Test keyboard navigation (1-0 keys, arrow keys, Escape)
-5. Test on mobile device or using browser DevTools responsive mode
-6. Verify explanation text accuracy
-7. Test rapid clicking
-8. Test page refresh (state should reset)
+4. Test on mobile device or using browser DevTools responsive mode
+5. Verify explanation text accuracy
+6. Test rapid clicking
+7. Test page refresh (state should reset)
 
 ## 📖 Documentation
 
